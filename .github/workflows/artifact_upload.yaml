@@ -13,11 +13,11 @@ jobs:
 
       - name: Create a Report
         run: |
-          echo "Build Successfull" > report.txt
-          echo "Generated on $(date)" >> report.txt
+          echo "Build Successfull" > reports.txt
+          echo "Generated on $(date)" >> reports.txt
 
       - name: Upload Artifact
         uses: actions/upload-artifact@v7
         with:
           name: build-report
-          path: report.txt
+          path: reports.txt
