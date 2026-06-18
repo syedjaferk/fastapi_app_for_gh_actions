@@ -84,14 +84,15 @@ jobs:
         id: meta
         uses: docker/metadata-action@v5
         with:
-          images: ${{ secrets.DOCKER_USERNAME }}/${{ secrets.IMAGE_NAME }}
+          images: ${{ secrets.DOCKER_USERNAME }}/${{ env.IMAGE_NAME }}
           tags: |
             type=sha
             type=raw,value=latest
 
-      - name: Build and push
+      - name: Build and Push Docker Image
         uses: docker/build-push-action@v6
         with:
           context: .
           push: true
-          tags: "latest"
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
