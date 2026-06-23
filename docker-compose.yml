@@ -1,0 +1,7 @@
+services:
+  fastapi:
+    image: syedjaferk/my-fastapi-app:latest
+    container_name: fastapi-app
+    restart: always
+    ports:
+      - "8990:8000"
